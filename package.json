@@ -13,27 +13,27 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@babel/polyfill": "^7.8.7",
+    "@babel/polyfill": "^7.11.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.5",
-    "@babel/preset-react": "^7.9.4",
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
     "babel-loader": "^8.1.0",
-    "css-loader": "^3.5.3",
-    "eslint": "^6.8.0",
+    "css-loader": "^4.3.0",
+    "eslint": "^7.11.0",
     "eslint-loader": "^4.0.2",
-    "eslint-plugin-react": "^7.19.0",
-    "file-loader": "^6.0.0",
-    "html-webpack-plugin": "^4.2.0",
+    "eslint-plugin-react": "^7.21.4",
+    "file-loader": "^6.1.1",
+    "html-webpack-plugin": "^4.5.0",
     "http-server": "^0.12.3",
-    "less": "^3.11.1",
-    "less-loader": "^6.0.0",
+    "less": "^3.12.2",
+    "less-loader": "^7.0.2",
     "npm-run-all": "^4.1.5",
-    "style-loader": "^1.2.0",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11"
+    "style-loader": "^2.0.0",
+    "webpack": "^5.0.0",
+    "webpack-cli": "^4.0.0"
   }
 }
