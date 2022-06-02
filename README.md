@@ -4,7 +4,7 @@ A boilerplate which uses webpack to build a front-end app with the following:
 * React
 * Less
 * ESLint
-* Babel (so that you can use ES6 and still support old browsers)
+* Babel (for es6 support)
 
 ## Run the app locally
 

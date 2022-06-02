@@ -1,27 +1,24 @@
+const ESLintPlugin = require('eslint-webpack-plugin');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const path = require('path');
+
 const htmlPlugin = new HtmlWebPackPlugin({
   template: "./src/index.html",
   filename: "./index.html"
 });
 
 const config = {
-  entry: ['@babel/polyfill', './src/index.js'],
+  entry: ['./src/index.js'],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: "[name].js"
   },
   plugins: [
-    htmlPlugin
+    htmlPlugin,
+    new ESLintPlugin({})
   ],
   module: {
     rules: [
-      {
-        enforce: 'pre',
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'eslint-loader'
-      },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
