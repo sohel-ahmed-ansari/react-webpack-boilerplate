@@ -1,41 +1,39 @@
+/* global require, __dirname, module */
 const ESLintPlugin = require('eslint-webpack-plugin');
-const HtmlWebPackPlugin = require("html-webpack-plugin");
+const HtmlWebPackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 const htmlPlugin = new HtmlWebPackPlugin({
-  template: "./src/index.html",
-  filename: "./index.html"
+  template: './src/index.html',
+  filename: './index.html',
 });
 
 const config = {
   entry: ['./src/index.js'],
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: "[name].js"
+    filename: '[name].js',
   },
-  plugins: [
-    htmlPlugin,
-    new ESLintPlugin({})
-  ],
+  plugins: [htmlPlugin, new ESLintPlugin({})],
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
-        }
+          loader: 'babel-loader',
+        },
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif|ttf|otf|woff|eot)$/,
-        loader: "file-loader",
-        options: { name: '/static/[name].[ext]' }
-      }
-    ]
-  }
+        loader: 'file-loader',
+        options: { name: '/static/[name].[ext]' },
+      },
+    ],
+  },
 };
 
-styleLoaderRules = {
+const styleLoaderRules = {
   dev: {
     test: /\.less$/,
     use: [
@@ -56,13 +54,9 @@ styleLoaderRules = {
   },
   prod: {
     test: /\.less$/,
-    use: [
-      'style-loader',
-      'css-loader',
-      'less-loader'
-    ]
-  }
-}
+    use: ['style-loader', 'css-loader', 'less-loader'],
+  },
+};
 
 module.exports = (env, argv) => {
   if (argv.mode === 'development') {

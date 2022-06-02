@@ -8,7 +8,6 @@ const App = () => {
     <div className="app">
       <img src={imgIcon}></img>
       <h1>Your boilerplate is ready!</h1>
-      <h2>Webpack ➜ React + Less + ESLint + Babel(for ES6)</h2>
     </div>
   );
 };
