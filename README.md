@@ -3,10 +3,10 @@
 A boilerplate which uses webpack to build a front-end app with the following:
 
 - React
+- Typescript
 - Less
 - ESLint
 - Prettier
-- Babel (for es6 support)
 
 ## Run the app locally
 

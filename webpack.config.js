@@ -8,62 +8,53 @@ const htmlPlugin = new HtmlWebPackPlugin({
   filename: './index.html',
 });
 
-const config = {
-  entry: ['./src/index.js'],
-  output: {
-    path: path.join(__dirname, 'dist'),
-    filename: '[name].js',
-  },
-  plugins: [htmlPlugin, new ESLintPlugin({})],
-  module: {
-    rules: [
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        },
-      },
-      {
-        test: /\.(png|svg|jpg|jpeg|gif|ttf|otf|woff|eot)$/,
-        loader: 'file-loader',
-        options: { name: '/static/[name].[ext]' },
-      },
-    ],
-  },
-};
-
-const styleLoaderRules = {
-  dev: {
-    test: /\.less$/,
-    use: [
-      'style-loader',
-      {
-        loader: 'css-loader',
-        options: {
-          sourceMap: true,
-        },
-      },
-      {
-        loader: 'less-loader',
-        options: {
-          sourceMap: true,
-        },
-      },
-    ],
-  },
-  prod: {
-    test: /\.less$/,
-    use: ['style-loader', 'css-loader', 'less-loader'],
-  },
-};
-
 module.exports = (env, argv) => {
-  if (argv.mode === 'development') {
+  const isDevMode = argv.mode === 'development';
+  const config = {
+    entry: ['./src/index.tsx'],
+    output: {
+      path: path.join(__dirname, 'dist'),
+      filename: '[name].js',
+    },
+    plugins: [htmlPlugin, new ESLintPlugin({})],
+    module: {
+      rules: [
+        {
+          test: /\.tsx?$/,
+          use: 'ts-loader',
+          exclude: /node_modules/,
+        },
+        {
+          test: /\.less$/,
+          use: [
+            'style-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                sourceMap: isDevMode,
+              },
+            },
+            {
+              loader: 'less-loader',
+              options: {
+                sourceMap: isDevMode,
+              },
+            },
+          ],
+        },
+        {
+          test: /\.(png|svg|jpg|jpeg|gif|ttf|otf|woff|eot)$/,
+          loader: 'file-loader',
+          options: { name: '/static/[name].[ext]' },
+        },
+      ],
+    },
+    resolve: {
+      extensions: ['.tsx', '.ts', '.js'],
+    },
+  };
+  if (isDevMode) {
     config.devtool = 'eval-source-map';
-    config.module.rules.push(styleLoaderRules.dev);
-  } else {
-    config.module.rules.push(styleLoaderRules.prod);
   }
   return config;
 };
